@@ -15,6 +15,9 @@ class Vector3:
     def mag(self):
         return math.sqrt((self.x ** 2) + (self.y ** 2) + (self.z ** 2))
 
+    def as_unit(self):
+        return self / self.mag
+
     def __add__(self, other):
         return Vector3(self.x + other.x,
                        self.y + other.y,

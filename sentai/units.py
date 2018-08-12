@@ -36,7 +36,7 @@ pc = 3.0857e16                  # Parsec
 
 
 # Time
-minute = 60                        # Minute
+minute = 60                     # Minute
 hour = 3600                     # Hour
 yr = 3.154e+7                   # Year
 
@@ -57,5 +57,17 @@ m_pluto = 1.46e22               # Mass of Pluto
 
 
 # Celestial Radii
-r_sun = 6.955e8
-e_earth = 6.3781e6
+r_sun = 6.955e8                 # Solar Radius
+r_earth = 6.3781e6              # Earth Radius
+
+
+# Celestial Distances (from sun)
+dist_mercury = 5.79e10
+dist_venus = 1.082e11
+dist_earth = 1.496e11
+dist_mars = 2.279e11
+dist_jupiter = 7.786e11
+dist_saturn = 1.4335e12
+dist_uranus = 2.8725e12
+dist_neptune = 4.4951e12
+dist_pluto=5.9064e12
