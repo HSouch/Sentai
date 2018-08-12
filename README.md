@@ -4,7 +4,7 @@ Sentai is a general physics package written in python. It has been created to se
 ### Sentai has the following features:
 
 * Vectors and vector operations.
-* Dynamic Bodies and rough collision support.
+* Dynamic Bodies and collision support.
 * Leap-frog N-body simulation (work in progress)
   * Random Body Generation
   * Default environments, such as the solar system.
