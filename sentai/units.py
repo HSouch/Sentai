@@ -7,6 +7,7 @@ p_length = 1.616229e-35         # Planck Length (in m)
 p_mass = 2.176e-8               # Planck Mass (in kg)
 p_time = 5.3912e-44             # Planck time (in s)
 
+pi = 3.141592653589             # Pi (To 12 digits)
 c = 2.99782e8                   # Speed of light (m/s)
 g = 6.67408e-11                 # Gravitational Constant (m^3 * kg^-1 * s^-2)
 h = 6.6261e-34                  # Planck Constant (J * s)
