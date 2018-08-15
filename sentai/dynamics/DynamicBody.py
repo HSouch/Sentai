@@ -12,6 +12,11 @@ class DynamicBody:
     def momentum(self):
         return self.velocity * self.mass
 
+    def print(self):
+        self.position.print()
+        self.velocity.print()
+        print("Mass:", self.mass)
+
 
 class CollidingBody(DynamicBody):
     """
