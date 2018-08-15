@@ -26,25 +26,33 @@ m_proton = 1.672622e-27         # Mass of Proton
 m_neutron = 1.674927e-27        # Mass of Neutron
 
 
-# Distance
+# Metric Units of Mass
+mg = 1e-6                       # Milligram
+gram = 1e-3                     # Gram
+tonne = 1000                    # Metric Tonne
+
+
+# Distances
 ang = 1e-10                     # Angstrom
 nm = 1e-9                       # Nanometre
 mm = 1e-3                       # Millimetre
+cm = 1e-2                       # Centimetre
+dm = 1e-1                       # Decimetre
 km = 1000                       # Kilometre
 au = 149597870700               # Astronomical Unit
 ly = 9.4607e15                  # Light Year
 pc = 3.0857e16                  # Parsec
 
 
-# Time
+# Times
 minute = 60                     # Minute
 hour = 3600                     # Hour
+day = 86400                     # Day
 yr = 3.154e+7                   # Year
 
 
-# Celestial Mass
+# Celestial Masses
 m_sun = 1.9885e30               # Solar Mass
-
 m_mercury = 3.30e23             # Mass of Mercury
 m_venus = 4.87e24               # Mass of Venus
 m_earth = 5.97e24               # Mass of Earth
@@ -72,3 +80,15 @@ dist_saturn = 1.4335e12
 dist_uranus = 2.8725e12
 dist_neptune = 4.4951e12
 dist_pluto=5.9064e12
+
+
+# Imperial Units
+inch = .0254                    # Inch
+ft = 0.3048                     # Foot
+yd = 0.9144                     # Yard
+mile = 1609.3                   # Mile
+
+oz = 0.2835                     # Ounce
+lb = 0.4536                     # Pound
+st = 6.3503                     # Stone
+
