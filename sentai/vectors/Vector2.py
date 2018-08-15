@@ -1,4 +1,5 @@
 import math
+from sentai.utils.stringops import trim_string
 
 
 class Vector2:
@@ -36,6 +37,9 @@ class Vector2:
         else:
             print("Error. Attempting to divide by zero.")
 
+    def print(self):
+        print("Vector2 Object: x:", trim_string(self.x, 5), "y:", trim_string(self.y, 5))
+
 
 def dot_product(a, b):
     return (a.x * b.x) + (a.y + b.y)
@@ -43,3 +47,4 @@ def dot_product(a, b):
 
 def dist(a, b):
     return Vector2(b.x - a.x, b.y - a.y).mag
+
