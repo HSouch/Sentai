@@ -2,7 +2,7 @@ from sentai.vectors.Vector3 import Vector3
 from sentai.dynamics.DynamicBody import centre_of_mass, DynamicBody
 
 
-class Octree:
+class Cell:
 
     def __init__(self, x, y, z, length, width, height):
         """
@@ -46,18 +46,18 @@ class Octree:
         return len(self.bodies)
 
     def divide(self):
-        """ Divide the octree into 8 sub-trees and place the bodies into the appropriate trees."""
+        """ Divide the cell into 8 sub-cellls and place the bodies into the appropriate cells."""
         new_length, new_width, new_height = self.length / 2, self.width / 2, self.height / 2
-        low_close_left = Octree(self.x, self.y, self.z, new_length, new_width, new_height)
-        low_close_right = Octree(self.x + new_length, self.y, self.z, new_length, new_width, new_height)
-        low_far_left = Octree(self.x, self.y + new_width, self.z, new_length, new_width, new_height)
-        low_far_right = Octree(self.x + new_length, self.y + new_width, self.z, new_length, new_width, new_height)
+        low_close_left = Cell(self.x, self.y, self.z, new_length, new_width, new_height)
+        low_close_right = Cell(self.x + new_length, self.y, self.z, new_length, new_width, new_height)
+        low_far_left = Cell(self.x, self.y + new_width, self.z, new_length, new_width, new_height)
+        low_far_right = Cell(self.x + new_length, self.y + new_width, self.z, new_length, new_width, new_height)
 
-        high_close_left = Octree(self.x, self.y, self.z + new_height, new_length, new_width, new_height)
-        high_close_right = Octree(self.x + new_length, self.y, self.z + new_height, new_length, new_width, new_height)
-        high_far_left = Octree(self.x, self.y + new_width, self.z + new_height, new_length, new_width, new_height)
-        high_far_right = Octree(self.x + new_length, self.y + new_width, self.z + new_height,
-                                new_length, new_width, new_height)
+        high_close_left = Cell(self.x, self.y, self.z + new_height, new_length, new_width, new_height)
+        high_close_right = Cell(self.x + new_length, self.y, self.z + new_height, new_length, new_width, new_height)
+        high_far_left = Cell(self.x, self.y + new_width, self.z + new_height, new_length, new_width, new_height)
+        high_far_right = Cell(self.x + new_length, self.y + new_width, self.z + new_height,
+                              new_length, new_width, new_height)
 
         for body in self.bodies:
             x, y, z = body.position.x, body.position.y, body.position.z
@@ -90,7 +90,31 @@ class Octree:
                     high_far_right.add_body(body)
                     continue
 
-        sub_octrees = [low_close_left, low_close_right, low_far_left, low_far_right,
-                       high_close_left, high_close_right, high_far_left, high_far_right]
+        sub_cells = [low_close_left, low_close_right, low_far_left, low_far_right,
+                     high_close_left, high_close_right, high_far_left, high_far_right]
 
-        return sub_octrees
+        return sub_cells
+
+
+def generate_root_cell(bodies):
+    min_x, max_x = bodies[0].position.x, bodies[0].position.x
+    min_y, max_y = bodies[0].position.y, bodies[0].position.y
+    min_z, max_z = bodies[0].position.z, bodies[0].position.z
+
+    for ind in range(1, len(bodies)):
+        if bodies[ind].position.x < min_x:
+            min_x = bodies[ind].position.x
+        elif bodies[ind].position.x > max_x:
+            max_x = bodies[ind].position.x
+
+        if bodies[ind].position.y < min_y:
+            min_y = bodies[ind].position.y
+        elif bodies[ind].position.y > max_y:
+            max_y = bodies[ind].position.x
+
+        if bodies[ind].position.z < min_z:
+            min_z = bodies[ind].position.z
+        elif bodies[ind].position.z > max_z:
+            max_z = bodies[ind].position.z
+    root_cell = Cell(min_x, min_y, min_z, abs(max_x - min_x), abs(max_y - min_y), abs(max_z - min_z))
+    return root_cell
