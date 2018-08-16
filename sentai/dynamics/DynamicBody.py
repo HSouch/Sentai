@@ -18,6 +18,19 @@ class DynamicBody:
         print("Mass:", self.mass)
 
 
+class BarnesHutBody(DynamicBody):
+    """ Body with an associated Cell attribute"""
+    def __init__(self, position, velocity, mass):
+        DynamicBody.__init__(self, position, velocity, mass)
+        self.cell = None
+
+    def assign_cell(self, cell):
+        self.cell = cell
+
+    def get_cell(self):
+        return self.cell
+
+
 class CollidingBody(DynamicBody):
     """
     Dynamic body with collision support.
