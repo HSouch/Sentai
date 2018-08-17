@@ -50,18 +50,28 @@ def advanced_celestial_body_sim(bodies, time_step, sim_time, max_internal_bodies
 
     for x in range(0, len(bodies)):
         bodies[x] = BarnesHutBody(bodies[x].position, bodies[x].velocity, bodies[x].mass)
+        bodies[x].id = x
 
     positions = []
     for x in range(0, len(bodies)):
         positions.append([])
-    # Root cell generation.
 
-    root_cell = generate_root_cell(bodies)
+    cells = split_cells(generate_root_cell(bodies), max_internal_bodies=5)
+    for x in range(0, len(cells)):
+        cells[x].id = x
+        for body in cells[x].bodies:
+            body.assign_cell(cells[x])
 
-    # Create full tree using recursive checks; generate cell list until no cells contain n_bodies > max_internal_bodies
-    # Make list of bodies and their associated cells. (Somehow)
-    # For each object, get its cell and directly check forces for every object within that cell
-    # Calculate forces with dynamic body created at the COM of each subsequent cell (with total mass of cell)
+    for body in bodies:
+        local_cell = body.cell
+        for near_body in local_cell.bodies:
+            if body.id != near_body.id:
+                body.acceleration += forces.grav_acceleration(body, near_body)
+        for cell in cells:
+            if cell.id != local_cell.id:
+                body.acceleration += forces.grav_acceleration(body, DynamicBody(cell.centre_of_mass, Vector3(0, 0, 0),
+                                                                                cell.total_mass()))
+
     # Adjust as normal. Update position list.
 
     return positions
