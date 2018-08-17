@@ -21,8 +21,10 @@ class Cell:
         self.width = width
         self.height = height
         self.bodies = []
+        self.centre_of_mass = self.get_centre_of_mass()
+        self.id = None
 
-    def centre_of_mass(self):
+    def get_centre_of_mass(self):
         return centre_of_mass(self.bodies)
 
     def total_mass(self):
@@ -117,4 +119,22 @@ def generate_root_cell(bodies):
         elif bodies[ind].position.z > max_z:
             max_z = bodies[ind].position.z
     root_cell = Cell(min_x, min_y, min_z, abs(max_x - min_x), abs(max_y - min_y), abs(max_z - min_z))
+    root_cell.bodies = bodies
     return root_cell
+
+
+def split_cells(root_cell: Cell, max_contained_bodies=5):
+    cells = []
+
+    if root_cell.body_count() <= max_contained_bodies:
+        return root_cell
+
+    for cell in root_cell.divide():
+        if cell.body_count() > max_contained_bodies:
+            cells.extend(split_cells(cell, max_contained_bodies=max_contained_bodies))
+
+    for cell in cells:
+        if cell.body_count() == 0:
+            cells.remove(cell)
+
+    return cells
