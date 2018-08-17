@@ -8,6 +8,7 @@ class DynamicBody:
         self.position = position
         self.velocity = velocity
         self.mass = mass
+        self.acceleration = 0
 
     def momentum(self):
         return self.velocity * self.mass
@@ -23,6 +24,7 @@ class BarnesHutBody(DynamicBody):
     def __init__(self, position, velocity, mass):
         DynamicBody.__init__(self, position, velocity, mass)
         self.cell = None
+        self.id = None
 
     def assign_cell(self, cell):
         self.cell = cell
