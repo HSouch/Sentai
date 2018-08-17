@@ -8,7 +8,7 @@ class DynamicBody:
         self.position = position
         self.velocity = velocity
         self.mass = mass
-        self.acceleration = 0
+        self.acceleration = Vector3(0, 0, 0)
 
     def momentum(self):
         return self.velocity * self.mass

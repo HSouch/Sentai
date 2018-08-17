@@ -56,7 +56,8 @@ def advanced_celestial_body_sim(bodies, time_step, sim_time, max_internal_bodies
     for x in range(0, len(bodies)):
         positions.append([])
 
-    cells = split_cells(generate_root_cell(bodies), max_internal_bodies=5)
+    cells = split_cells(generate_root_cell(bodies), max_contained_bodies=5)
+    print(type(cells))
     for x in range(0, len(cells)):
         cells[x].id = x
         for body in cells[x].bodies:

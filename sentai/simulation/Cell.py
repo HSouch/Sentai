@@ -127,7 +127,8 @@ def split_cells(root_cell: Cell, max_contained_bodies=5):
     cells = []
 
     if root_cell.body_count() <= max_contained_bodies:
-        return root_cell
+        cells.append(root_cell)
+        return cells
 
     for cell in root_cell.divide():
         if cell.body_count() > max_contained_bodies:
