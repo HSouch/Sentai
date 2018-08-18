@@ -1,4 +1,5 @@
-# Sentai -- 船体
+![](https://i.imgur.com/5j2r6qP.png)
+
 Sentai is a general physics package written in python. It has been created to serve as a base environment to facilitate work in a university-level computational physics course.
 
 ### Sentai has the following features:
