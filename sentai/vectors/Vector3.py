@@ -40,7 +40,8 @@ class Vector3:
                            self.y / const,
                            self.z / const)
         else:
-            print("Error. Attempting to divide by zero.")
+            # print("Vector3 -- Error. Attempting to divide by zero.")
+            pass
 
     def print(self):
         print("Vector3 Object: x:", trim_string(self.x, 8), "y:", trim_string(self.y, 8), "z:", trim_string(self.z, 8))
