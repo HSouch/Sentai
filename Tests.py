@@ -1,7 +1,5 @@
-from sentai import units
 from sentai.dynamics.DynamicBody import *
 from sentai.simulation import nbodysim, random_gen
-from sentai.plotting import plots
 
 db1 = DynamicBody(Vector3(0, 0, 0), Vector3(0, 0, 0), units.m_sun)
 db2 = DynamicBody(Vector3(units.dist_earth, 0, 0), Vector3(0, 30 * units.km, 0), units.m_earth)

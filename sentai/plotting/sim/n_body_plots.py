@@ -4,6 +4,13 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 
+"""
+========================================
+N-Body Plots
+========================================
+For plotting n-body simulations in a 3-Dimensional environment.
+"""
+
 def n_body_plot(positions, convert_to=1):
     fig = plt.subplot(111, projection='3d')
     for position_list in positions:
