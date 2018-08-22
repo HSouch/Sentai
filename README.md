@@ -9,6 +9,7 @@ Sentai is a general physics package written in python. It has been created to se
 * Leap-frog N-body simulation (work in progress)
   * Random Body Generation
   * Default environments, such as the solar system.
+* Custom plot generation with Matplotlib
   
 ### Future Plans Include:
 * N-Body Simulation with Barnes-Hut Methods (for O(nlog(n)) simulation speed)
