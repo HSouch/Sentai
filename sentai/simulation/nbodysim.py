@@ -36,7 +36,7 @@ def celestial_body_sim(bodies, time_step, sim_time):
     return positions
 
 
-def advanced_celestial_body_sim(bodies, time_step, sim_time, max_internal_bodies=5):
+def advanced_celestial_body_sim(init_bodies, time_step, sim_time, max_contained_bodies=5):
     """
     Advanced n-body simulator using Barnes-Hut simulation techniques. Should only be used for simulations with large
     numbers of bodies (1000 plus). Otherwise it is better to use celestial_body_sim().
@@ -47,6 +47,7 @@ def advanced_celestial_body_sim(bodies, time_step, sim_time, max_internal_bodies
             more accurate the simulation.
     :return:
     """
+    bodies = np.copy(init_bodies)
 
     for x in range(0, len(bodies)):
         bodies[x] = BarnesHutBody(bodies[x].position, bodies[x].velocity, bodies[x].mass)
@@ -57,21 +58,28 @@ def advanced_celestial_body_sim(bodies, time_step, sim_time, max_internal_bodies
         positions.append([])
 
     cells = split_cells(generate_root_cell(bodies), max_contained_bodies=5)
-    print(type(cells))
-    for x in range(0, len(cells)):
+    print("Number of bodies:", len(bodies), " | Final:", len(cells))
+
+    for x in range(0, len(cells)):  # Assign cell id
         cells[x].id = x
         for body in cells[x].bodies:
             body.assign_cell(cells[x])
 
-    for body in bodies:
-        local_cell = body.cell
-        for near_body in local_cell.bodies:
-            if body.id != near_body.id:
-                body.acceleration += forces.grav_acceleration(body, near_body)
-        for cell in cells:
-            if cell.id != local_cell.id:
-                body.acceleration += forces.grav_acceleration(body, DynamicBody(cell.centre_of_mass, Vector3(0, 0, 0),
-                                                                                cell.total_mass()))
+    for cell in cells:
+        cell.centre_of_mass = cell.get_centre_of_mass()
+        cell.centre_of_mass.print()
+
+
+    # for body in bodies:
+    #     local_cell = body.cell
+    #     print(body.cell)
+    #     for near_body in local_cell.bodies:
+    #         if body.id != near_body.id:
+    #             body.acceleration += forces.grav_acceleration(body, near_body)
+    #     for cell in cells:
+    #         if cell.id != local_cell.id:
+    #             body.acceleration += forces.grav_acceleration(body, DynamicBody(cell.centre_of_mass, Vector3(0, 0, 0),
+    #                                                                             cell.total_mass()))
 
     # Adjust as normal. Update position list.
 
