@@ -21,7 +21,7 @@ class Cell:
         self.width = width
         self.height = height
         self.bodies = []
-        self.centre_of_mass = self.get_centre_of_mass()
+        self.centre_of_mass = Vector3(0, 0, 0)
         self.id = None
 
     def get_centre_of_mass(self):
@@ -123,19 +123,23 @@ def generate_root_cell(bodies):
     return root_cell
 
 
-def split_cells(root_cell: Cell, max_contained_bodies=5):
+def split_cells(root_cell: Cell, max_contained_bodies=5, level=0):
     cells = []
+
+    # print("Level:", level, "Number of contained cells:", root_cell.body_count())
+    # print(root_cell.body_count(), max_contained_bodies)
 
     if root_cell.body_count() <= max_contained_bodies:
         cells.append(root_cell)
         return cells
-
-    for cell in root_cell.divide():
-        if cell.body_count() > max_contained_bodies:
-            cells.extend(split_cells(cell, max_contained_bodies=max_contained_bodies))
-
-    for cell in cells:
-        if cell.body_count() == 0:
-            cells.remove(cell)
+    else:
+        sub_cells = root_cell.divide()
+        for cell in sub_cells:
+            if cell.body_count() > max_contained_bodies:
+                cells.extend(split_cells(cell, max_contained_bodies=max_contained_bodies, level=level + 1))
+            else:
+                if cell.body_count() > 0:
+                    cells.append(cell)
 
     return cells
+
