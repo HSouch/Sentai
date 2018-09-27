@@ -19,6 +19,11 @@ c_const = 8.987552e9            # Coulomb's Constant (1/(4 * pi * epsilon_naught
 sb = 5.670367e-8                # Stefan-Boltzmann Constant
 stef_boltz = 5.670367e-8        # Stefan-Boltzmann Constant
 
+e_fund = 1.6022e-19             # Fundamental Charge
+epsilon_naught = 8.85418e-12    # Vacuum Permittivity
+electron_volt = 1.602e-19       # Electron Volt
+eV = 1.602e-19       # Electron Volt
+
 
 # Fundamental Units of Mass
 m_electron = 9.109384e-31       # Mass of Electron
