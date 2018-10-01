@@ -22,7 +22,8 @@ stef_boltz = 5.670367e-8        # Stefan-Boltzmann Constant
 e_fund = 1.6022e-19             # Fundamental Charge
 epsilon_naught = 8.85418e-12    # Vacuum Permittivity
 electron_volt = 1.602e-19       # Electron Volt
-eV = 1.602e-19       # Electron Volt
+eV = 1.602e-19                  # Electron Volt
+MeV = eV * 1e6
 
 
 # Fundamental Units of Mass
