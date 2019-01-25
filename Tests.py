@@ -1,4 +1,4 @@
-from sentai.astro.highenergy import *
+from sentai.astro import *
 # positions = nbodysim.celestial_body_sim([db1, db2], 1 * units.day, 10 * units.yr)
 
 # for x in range(0, 1):
@@ -8,5 +8,5 @@ from sentai.astro.highenergy import *
 energies = [0.02, 0.2, 2, 20]
 
 for e in energies:
-    print(e, photoelectric_absorption(e))
-
+    print(e, photoelectric_absorption(e), mean_free_path(photoelectric_absorption(e), 1),
+          mean_free_path(photoelectric_absorption(e), 1) * units.cm / units.pc)

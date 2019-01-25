@@ -7,7 +7,7 @@ Functions to process interstellar medium dust and gas extinction.
 """
 
 
-def calc_apparent_magnitude(abs_mag=0, extinction=0, dist=1):
+def apparent_magnitude(abs_mag=0, extinction=0, dist=1):
     """
     Calculates the apparent magnitude of an object a given distance away, with a known
     absolute magnitude.
@@ -24,4 +24,11 @@ def calc_apparent_magnitude(abs_mag=0, extinction=0, dist=1):
         return 0
 
 
-print(calc_apparent_magnitude(-1.3, 1.1, 700))
+def mean_free_path(sigma, n):
+    """
+    Calculates the mean free path for a given cross section and number density.
+    :param sigma: Inverse Cubic Units
+    :param n: Squared Units
+    :return: Mean Free path in given units
+    """
+    return 1 / (sigma * n)
