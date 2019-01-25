@@ -11,7 +11,7 @@ For making general, good looking plots for physics work.
 
 
 def gen_plot(x, y, xlabel="", ylabel="", err_x=None, err_y=None, show_plot=False, save_plot=False, fit=False,
-             show_slope=False, tight_layout=True, line=True,
+             show_slope=False, slope_label="m", tight_layout=True, line=True,
              filetype="pdf", filename="plot"):
     if line == True:
         l_style = 'dashed'
@@ -30,7 +30,7 @@ def gen_plot(x, y, xlabel="", ylabel="", err_x=None, err_y=None, show_plot=False
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
 
-    if fit:
+    if fit:  # Plot slope
         z = np.polyfit(x, y, deg=1)
         p = np.poly1d(z)
         plt.plot(x, p(x), color="red")
@@ -40,7 +40,7 @@ def gen_plot(x, y, xlabel="", ylabel="", err_x=None, err_y=None, show_plot=False
             slope = str(p(1) - p(0))
             if len(slope) > 8:
                 slope = slope[0:7]
-            plt.text(x_loc, y_loc, "m=" + slope)
+            plt.text(x_loc, y_loc, slope_label + "=" + slope)
     if tight_layout:
         plt.tight_layout()
     if show_plot:

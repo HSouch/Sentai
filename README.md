@@ -13,7 +13,6 @@ Sentai is a general physics package written in python. It has been created to se
   
 ### Future Plans Include:
 * N-Body Simulation with Barnes-Hut Methods (for O(nlog(n)) simulation speed)
-* Numerical Integration / Differentiation
 * Astrophysics / Cosmology Functions
 * Galaxy Image Generation with Sérsic Profiles
 * Lens Modeling 
