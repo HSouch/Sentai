@@ -2,6 +2,9 @@
 Units for sentai and related applications. All units are derived from SI units.
 """
 
+r_e = 10e-16                    # Rounding error in Python
+rounding_error = r_e            # Rounding Error in Python
+
 # Constants
 p_length = 1.616229e-35         # Planck Length (in m)
 p_mass = 2.176e-8               # Planck Mass (in kg)
@@ -17,7 +20,7 @@ k = 8.987552e9                  # Coulomb's Constant (1/(4 * pi * epsilon_naught
 c_const = 8.987552e9            # Coulomb's Constant (1/(4 * pi * epsilon_naught))
 
 sb = 5.670367e-8                # Stefan-Boltzmann Constant
-stef_boltz = 5.670367e-8        # Stefan-Boltzmann Constant
+stef_boltz = sb                # Stefan-Boltzmann Constant
 
 e_fund = 1.6022e-19             # Fundamental Charge
 epsilon_naught = 8.85418e-12    # Vacuum Permittivity
