@@ -1,5 +1,5 @@
 import math
-from sentai.utils.stringops import *
+from utils.stringops import *
 
 
 class Vector3:

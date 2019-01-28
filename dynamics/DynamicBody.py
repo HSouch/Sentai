@@ -1,5 +1,5 @@
-from sentai import units
-from sentai.vectors.Vector3 import *
+import units
+from vectors.Vector3 import *
 
 
 class DynamicBody:

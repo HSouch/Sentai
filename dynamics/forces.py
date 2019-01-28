@@ -1,6 +1,6 @@
-from sentai import units
-from sentai.dynamics.DynamicBody import DynamicBody
-from sentai.vectors.Vector3 import Vector3
+import units
+from dynamics.DynamicBody import DynamicBody
+from vectors.Vector3 import Vector3
 
 
 def grav_force(db1: DynamicBody, db2: DynamicBody):

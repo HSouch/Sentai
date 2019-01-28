@@ -1,4 +1,4 @@
-from sentai import units
+import units
 import math
 from matplotlib import pyplot as plt
 import numpy as np
@@ -64,7 +64,7 @@ def build_finite_energy_function(mass=0, v=0, length=0):
     roots = [1.31, 2.00, 3.85, 4.94]  # Roots found graphically from the corresponding plot output.
     for root in roots:  # Get energy values for each root
         a = root / length
-        energy = (a ** 2 * units.h_bar ** 2)/ (2 * mass)
+        energy = (a ** 2 * units.h_bar ** 2) / (2 * mass)
         print(root, a, energy, energy / units.electron_volt)
 
 

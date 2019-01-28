@@ -1,8 +1,7 @@
 import numpy as np
-from sentai.vectors.Vector3 import *
-from sentai.dynamics import forces
-from sentai.dynamics.DynamicBody import *
-from sentai.simulation.Cell import *
+from dynamics import forces
+from dynamics.DynamicBody import *
+from simulation.Cell import *
 
 """
 Class containing n-body simulation methods
