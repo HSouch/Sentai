@@ -1,5 +1,5 @@
-import units
-from vectors.Vector3 import *
+from sentai import units
+from sentai.vectors.Vector3 import *
 
 
 class DynamicBody:
@@ -17,6 +17,24 @@ class DynamicBody:
         self.position.print()
         self.velocity.print()
         print("Mass:", self.mass)
+
+
+class Molecule:
+    """ General atom with charge"""
+    def __int__(self, position: Vector3, velocity: Vector3, mass, charge):
+        self.position = position
+        self.velocity = velocity
+        self.mass = mass
+        self.charge = charge
+        self.acceleration = Vector3(0, 0, 0)
+
+    def momentum(self):
+        return self.velocity * self.mass
+
+    def print(self):
+        self.position.print()
+        self.velocity.print()
+        print("Mass", self.mass)
 
 
 class BarnesHutBody(DynamicBody):
