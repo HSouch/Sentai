@@ -1,3 +1,8 @@
+"""
+Functions for performing differential and integral calculus based on given functions.
+"""
+
+
 def simpson(f, a, b, n):
     """
     Returns the integral for a function from a to b using Simpson's Rule. User-set number of steps n.

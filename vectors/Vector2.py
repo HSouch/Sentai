@@ -1,5 +1,5 @@
 import math
-from utils.stringops import trim_string
+from sentai.utils.stringops import trim_string
 
 
 class Vector2:

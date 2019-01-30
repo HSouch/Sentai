@@ -1,6 +1,6 @@
 import random
 # from sentai.vectors.Vector3 import *
-from dynamics.DynamicBody import *
+from sentai.dynamics.DynamicBody import *
 
 """
 Random Generation Methods for N-Body simulation.

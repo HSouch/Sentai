@@ -1,5 +1,5 @@
-from vectors.Vector3 import Vector3
-from dynamics.DynamicBody import centre_of_mass, DynamicBody
+from sentai.vectors.Vector3 import Vector3
+from sentai.dynamics.DynamicBody import centre_of_mass, DynamicBody
 
 
 class Cell:

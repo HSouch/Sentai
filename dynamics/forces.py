@@ -1,4 +1,3 @@
-from sentai import units
 from sentai.dynamics.DynamicBody import *
 from sentai.vectors.Vector3 import Vector3
 

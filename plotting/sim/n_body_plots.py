@@ -1,4 +1,4 @@
-from matplotlib import pyplot as plt
+from matplotlib.pyplot import subplot, show, plot
 
 """
 ========================================
@@ -7,8 +7,9 @@ N-Body Plots
 For plotting n-body simulations in a 3-Dimensional environment.
 """
 
+
 def n_body_plot(positions, convert_to=1):
-    fig = plt.subplot(111, projection='3d')
+    fig = subplot(111, projection='3d')
     for position_list in positions:
         xs, ys, zs = [], [], []
         for vector in position_list:
@@ -17,4 +18,4 @@ def n_body_plot(positions, convert_to=1):
             zs.append(vector.z / convert_to)
         fig.plot(xs, ys, zs)
 
-    plt.show()
+    show()

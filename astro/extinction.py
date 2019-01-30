@@ -1,5 +1,4 @@
-import math
-
+from numpy import log
 
 """
 Functions to process interstellar medium dust and gas extinction.
@@ -16,7 +15,7 @@ def apparent_magnitude(abs_mag=0, extinction=0, dist=1):
     :return: The apparent magnitude (in mag)
     """
     try:
-        app_mag = (5 * math.log(dist, 10)) - 5 + extinction + abs_mag
+        app_mag = (5 * log(dist, 10)) - 5 + extinction + abs_mag
         return app_mag
     except:
         print("Error. Check your inputs.")
