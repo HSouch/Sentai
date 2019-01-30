@@ -43,9 +43,48 @@ def trapezoidal(f, a, b, n):
     return (h / 2) * total_sum
 
 
+def trapezoidal_error(i_1, i_2):
+    return abs((1/3) * (i_2 - i_1))
+
+
+def simpson_partial_summer(f, a, b, n):
+    h = (b - a) / n
+    total_sum = 0
+    for i in range(1, n, 2):
+        x_i = a + (i * h)
+        total_sum += (2 * f(x_i))
+
+    return (h / 2) * total_sum
+
+
+def adaptive_trapezoidal(f, a, b, n_init, accuracy=10e-12, verbose=False):
+    multiple = 2
+
+    i_1 = trapezoidal(f, a, b, n_init)
+    i_2 = trapezoidal(f, a, b, n_init * multiple)
+    error = trapezoidal_error(i_1, i_2)
+
+    if error < accuracy:
+        return i_2
+    else:
+        multiple *= 2
+
+    while error > accuracy:
+        i_1 = i_2   # Set I_(i-1) to the current I_i
+        i_2 = (1/2 * i_1) + simpson_partial_summer(f, a, b, n_init * multiple)
+        error = trapezoidal_error(i_1, i_2)
+        multiple *= 2
+        if verbose:
+            print(multiple, error)
+    return i_2
+
+
 def derivative(func, x, delta=10e-6):
     """
     Returns the derivative of a function at a given x value. Delta is adjustable but set to a reasonable starting
     amount
     """
     return (func(x + delta) - func(x)) / delta
+
+
+
